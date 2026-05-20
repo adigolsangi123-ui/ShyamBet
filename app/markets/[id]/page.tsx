@@ -90,7 +90,6 @@ export default function MarketPage({ params }: { params: Promise<{ id: string }>
 
   const status = getEffectiveStatus(market)
   const isCreator = profile?.id === market.creator_id
-  const hasBets = bets.length > 0
   const canBet = status === 'open'
   const canDelete = isCreator && bets.length === 0 && status === 'open'
 

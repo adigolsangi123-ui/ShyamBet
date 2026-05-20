@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { Market, Profile, getEffectiveStatus, formatDate, formatCoins } from '@/lib/types'
+import { Market, Profile, formatDate, formatCoins } from '@/lib/types'
 import { OddsBar } from '@/components/OddsBar'
 import { Spinner } from '@/components/Spinner'
 import { SuccessScreen } from '@/components/SuccessScreen'
