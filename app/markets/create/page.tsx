@@ -11,6 +11,7 @@ const CATEGORIES = ['Politics', 'Sports', 'Entertainment', 'Tech', 'Science', 'S
 
 export default function CreateMarketPage() {
   const [profile, setProfile] = useState<Profile | null>(null)
+  const [checking, setChecking] = useState(true)
   const [question, setQuestion] = useState('')
   const [category, setCategory] = useState('')
   const [customCategory, setCustomCategory] = useState('')
@@ -26,6 +27,7 @@ export default function CreateMarketPage() {
       if (!user) { router.push('/auth/login'); return }
       const { data } = await supabase.from('profiles').select('*').eq('id', user.id).single()
       if (data) setProfile(data)
+      setChecking(false)
     })
   }, [])
 
@@ -70,6 +72,7 @@ export default function CreateMarketPage() {
     setTimeout(() => router.push('/'), 1400)
   }
 
+  if (checking) return <Spinner show />
   if (!profile) return null
 
   return (
