@@ -31,7 +31,7 @@ export default function LoginPage() {
     }
 
     setSuccess(true)
-    setTimeout(() => router.push('/'), 1200)
+    setTimeout(() => { window.location.href = '/' }, 1200)
   }
 
   return (

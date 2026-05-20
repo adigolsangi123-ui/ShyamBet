@@ -44,7 +44,7 @@ export default function SignupPage() {
     }
 
     setSuccess(true)
-    setTimeout(() => router.push('/'), 1400)
+    setTimeout(() => { window.location.href = '/' }, 1400)
   }
 
   return (

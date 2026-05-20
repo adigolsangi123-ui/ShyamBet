@@ -15,20 +15,21 @@ export function Navbar() {
   // Load profile once on mount and when auth changes
   useEffect(() => {
     async function loadProfile() {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) { setProfile(null); setUserId(null); return }
-      setUserId(user.id)
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session?.user) { setProfile(null); setUserId(null); return }
+      setUserId(session.user.id)
       const { data } = await supabase
         .from('profiles')
         .select('*')
-        .eq('id', user.id)
+        .eq('id', session.user.id)
         .single()
       if (data) setProfile(data)
     }
 
     loadProfile()
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) { setProfile(null); setUserId(null); return }
       loadProfile()
     })
 
