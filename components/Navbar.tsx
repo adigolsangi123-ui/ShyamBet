@@ -18,11 +18,19 @@ export function Navbar() {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) { setProfile(null); setUserId(null); return }
       setUserId(user.id)
-      const { data } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', user.id)
-        .single()
+
+      let { data } = await supabase.from('profiles').select('*').eq('id', user.id).single()
+
+      if (!data) {
+        const username = (user.user_metadata?.username as string) || user.email?.split('@')[0] || 'user'
+        await supabase.from('profiles').upsert(
+          { id: user.id, username, email: user.email ?? '', balance: 1000 },
+          { onConflict: 'id', ignoreDuplicates: true }
+        )
+        const { data: created } = await supabase.from('profiles').select('*').eq('id', user.id).single()
+        data = created
+      }
+
       if (data) setProfile(data)
     }
 

@@ -25,7 +25,19 @@ export default function CreateMarketPage() {
     const supabase = createClient()
     supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (!user) { router.push('/auth/login'); return }
-      const { data } = await supabase.from('profiles').select('*').eq('id', user.id).single()
+
+      let { data } = await supabase.from('profiles').select('*').eq('id', user.id).single()
+
+      if (!data) {
+        const username = (user.user_metadata?.username as string) || user.email?.split('@')[0] || 'user'
+        await supabase.from('profiles').upsert(
+          { id: user.id, username, email: user.email ?? '', balance: 1000 },
+          { onConflict: 'id', ignoreDuplicates: true }
+        )
+        const { data: created } = await supabase.from('profiles').select('*').eq('id', user.id).single()
+        data = created
+      }
+
       if (data) setProfile(data)
       setChecking(false)
     })
