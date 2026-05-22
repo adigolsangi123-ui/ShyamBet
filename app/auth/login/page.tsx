@@ -42,7 +42,7 @@ export default function LoginPage() {
       <div className="mx-auto max-w-sm pt-8">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-black text-white">
-            Night<span className="text-indigo-400">bet</span>
+            Shyam<span className="text-indigo-400">Bet</span>
           </h1>
           <p className="mt-1 text-slate-400">Sign in to your account</p>
         </div>

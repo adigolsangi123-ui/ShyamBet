@@ -55,7 +55,7 @@ export default function SignupPage() {
       <div className="mx-auto max-w-sm pt-8">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-black text-white">
-            Night<span className="text-indigo-400">bet</span>
+            Shyam<span className="text-indigo-400">Bet</span>
           </h1>
           <p className="mt-1 text-slate-400">Create your account — start with 1,000 coins</p>
         </div>
@@ -75,7 +75,7 @@ export default function SignupPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full rounded-lg bg-slate-800 px-4 py-3 text-white placeholder-slate-500 ring-1 ring-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              placeholder="nightbetter"
+              placeholder="shyambetter"
               maxLength={30}
             />
           </div>

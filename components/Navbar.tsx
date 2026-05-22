@@ -72,7 +72,7 @@ export function Navbar() {
     <nav className="sticky top-0 z-40 border-b border-slate-700/50 bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-slate-900/80">
       <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-black tracking-tight text-white">Night<span className="text-indigo-400">bet</span></span>
+          <span className="text-xl font-black tracking-tight text-white">Shyam<span className="text-indigo-400">Bet</span></span>
         </Link>
 
         <div className="flex items-center gap-3">

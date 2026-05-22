@@ -3,7 +3,7 @@ import './globals.css'
 import { Navbar } from '@/components/Navbar'
 
 export const metadata: Metadata = {
-  title: 'Nightbet',
+  title: 'ShyamBet',
   description: 'Prediction markets for a one-night event',
 }
 
